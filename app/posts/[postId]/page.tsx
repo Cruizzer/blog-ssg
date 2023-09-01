@@ -3,9 +3,8 @@ import { getPostsMeta, getPostByName } from "@/lib/posts"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import 'highlight.js/styles/github-dark.css'
-import styles from './page.module.css'
 
-export const revalidate = 6000//86400
+export const revalidate = 86400
 
 type Props = {
     params: {
