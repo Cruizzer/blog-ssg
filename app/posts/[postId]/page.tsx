@@ -53,12 +53,12 @@ export default async function Post({ params: { postId } }: Props) {
     ))
 
     return (
-        <>
-            <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
-            <p className="mt-0 text-sm">
+        <div className="flex flex-col">
+            <h2 className="self-end text-3xl mt-4 mb-0">{meta.title}</h2>
+            <p className="self-end mt-0 text-sm">
                 {pubDate}
             </p>
-            <article className="font-body">
+            <article className="prose-quoteless">
                 {content}
             </article>
             <section>
@@ -70,6 +70,6 @@ export default async function Post({ params: { postId } }: Props) {
             <p className="mb-10">
                 <Link href="/">← Back to home</Link>
             </p>
-        </>
+        </div>
     )
 }
