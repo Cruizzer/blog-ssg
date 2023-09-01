@@ -3,8 +3,9 @@ import { getPostsMeta, getPostByName } from "@/lib/posts"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import 'highlight.js/styles/github-dark.css'
+import styles from './page.module.css'
 
-export const revalidate = 86400
+export const revalidate = 6000//86400
 
 type Props = {
     params: {
@@ -57,7 +58,7 @@ export default async function Post({ params: { postId } }: Props) {
             <p className="mt-0 text-sm">
                 {pubDate}
             </p>
-            <article>
+            <article className="font-body">
                 {content}
             </article>
             <section>
