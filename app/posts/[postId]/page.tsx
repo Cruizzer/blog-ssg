@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import 'highlight.js/styles/github-dark.css'
 
-export const revalidate = 20//86400
+export const revalidate = 60//86400
 
 type Props = {
     params: {
@@ -52,23 +52,31 @@ export default async function Post({ params: { postId } }: Props) {
     ))
 
     return (
-        <div className="flex flex-col">
-            <h2 className="self-end text-3xl mt-4 mb-0">{meta.title}</h2>
-            <p className="self-end mt-0 text-sm">
-                {pubDate}
-            </p>
-            <article className="prose-quoteless">
+        <>
+            <div className="flex flex-wrap justify-between my-8">
+                <div>
+                    <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
+                    <p className="mt-0 text-sm">{pubDate}</p>
+                </div>
+                <p>
+                    <Link className= "mx-4" href="/">← Back to home</Link>
+                </p>
+            </div>
+            {/* Footnotes Adjusted */}
+            <article className="dark:prose-dark  
+            [&>.footnotes>ol]:flex
+            [&>.footnotes>ol]:flex-wrap
+            [&>.footnotes>ol>li]:mx-6  
+            [&>.footnotes>ol>li]:-m-4
+            dark:[&>.footnotes>ol]:bg-gray-700">
                 {content}
             </article>
             <section>
                 <h3>Related:</h3>
-                <div className="flex flex-row gap-4">
+                <div className="mb-5 flex flex-row gap-4 items-center flex-wrap">
                     {tags}
                 </div>
             </section>
-            <p className="mb-10">
-                <Link href="/">← Back to home</Link>
-            </p>
-        </div>
+        </>
     )
 }

@@ -4,6 +4,7 @@ import rehypeHighlight from 'rehype-highlight/lib'
 import rehypeSlug from 'rehype-slug'
 import Video from '@/app/components/Video'
 import CustomImage from '@/app/components/CustomImage'
+import remarkGfm from 'remark-gfm'
 
 type Filetree = {
     "tree": [
@@ -44,6 +45,9 @@ export async function getPostByName(fileName: string): Promise<BlogPost | undefi
                         behavior: 'wrap'
                     }],
                 ],
+                remarkPlugins: [
+                    remarkGfm
+                ]
             },
         }
     })
@@ -52,6 +56,7 @@ export async function getPostByName(fileName: string): Promise<BlogPost | undefi
 
     const blogPostObj: BlogPost = { meta: { id, title: frontmatter.title, date: frontmatter.date, tags: frontmatter.tags }, content }
 
+    // console.log(blogPostObj.content)
     return blogPostObj
 }
 
