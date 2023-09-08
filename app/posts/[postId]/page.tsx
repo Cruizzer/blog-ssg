@@ -3,7 +3,6 @@ import { getPostsMeta, getPostByName } from "@/lib/posts"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import 'highlight.js/styles/github-dark.css'
-import styles from './page.module.css';
 
 export const revalidate = 60//86400
 
@@ -64,10 +63,7 @@ export default async function Post({ params: { postId } }: Props) {
                 </p>
             </div>
             {/* Footnotes Adjusted */}
-            <article className={`prose-light dark:prose-dark  
-             ${styles['styles']}  
-             
-             `}>
+            <article className="prose-light dark:prose-dark">
                 {content}
             </article>
             <section>
