@@ -10,29 +10,60 @@ module.exports = {
             typography: {
                 DEFAULT: {
                     css: {
-                        blockquote: {
-                            fontStyle: "normal",
-                            fontWeight: "normal",
+                        a: {
+                            color: "#3182ce",
+                            textDecoration: "none !important",
+                            "&:hover": {
+                                color: "#2c5282",
+                            },
                         },
                     },
                 },
                 dark: {
                     css: {
-                        "blockquote p:first-of-type::before": {
-                            content: "none",
-                        },
-                        "blockquote p:first-of-type::after": {
-                            content: "none",
-                        },
-                        a: {
-                            color: "#3182ce",
-                            "&:hover": {
-                                color: "#2c5282",
+                        li: {
+                            "&::marker": {
+                                color: "#ffffff",
                             },
                         },
                         blockquote: {
+                            borderLeft: "5px solid #c9cfd6",
                             backgroundColor: "#222e42",
-                            padding: "0.25rem",
+                            "&:hover": {
+                                backgroundColor: "#4B8F8C",
+                            },
+                            "&::before": {
+                                color: "#E6DBD0",
+                            },
+                        },
+                        section: {
+                            ol: {
+                                backgroundColor: "#374151",
+                            },
+                        },
+                    },
+                },
+                light: {
+                    css: {
+                        li: {
+                            "&::marker": {
+                                color: "#000000",
+                            },
+                        },
+                        blockquote: {
+                            borderLeft: "5px solid #38393b",
+                            backgroundColor: "#c9cfd6",
+                            "&:hover": {
+                                backgroundColor: "#9EC1FA",
+                            },
+                            "&::before": {
+                                color: "#E6DBD0",
+                            },
+                        },
+                        section: {
+                            ol: {
+                                backgroundColor: "#9EA9BD",
+                            },
                         },
                     },
                 },

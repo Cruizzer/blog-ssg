@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="dark:bg-slate-800">
+      <body className="bg-slate-200 dark:bg-slate-800">
         <Navbar />
         <main className="px-4 md:px-12 lg:px-36 prose prose-lg prose-slate dark:prose-invert max-w-none text-base">
           {children}

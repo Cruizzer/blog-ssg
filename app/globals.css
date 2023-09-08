@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+blockquote {
+    font-size: 1.1em;
+    line-height:1.6;
+    position: relative;
+    font-style: normal;
+    content: none;
+}
+
+blockquote:hover {
+    background-color: #CD5D67;
+    transition-delay: 100ms;
+
+    transition-timing-function:cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 800ms;
+}
+
+blockquote > p {
+    font-style: normal;
+    font-weight: 250;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 1.6em 1.4em 1.6em 2.6em;
+}
+
+blockquote > p:first-of-type::before {
+    content: none;
+}
+
+blockquote > p:first-of-type::after {
+    content: none;
+}
+
+blockquote::before {
+    content: "\201C";
+    color:#C98556;
+    font-size: 4em;
+    position: absolute;
+    left: 10px;
+    top:-10px;
+}
+
+blockquote::after {
+    content: '';
+}
+
+.footnotes > ol {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.footnotes > ol > li {
+    margin: -1rem 1.5rem;
+}
+
+.footnotes > ol > li > p > a {
+    text-decoration: none;
+}
+
+
+/* 
+[&>.footnotes>ol]:flex
+[&>.footnotes>ol]:flex-wrap
+[&>.footnotes>ol>li]:mx-6  
+[&>.footnotes>ol>li]:-m-4 
+dark:[&>.footnotes>ol]:bg-gray-700
+             */
