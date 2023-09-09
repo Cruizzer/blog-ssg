@@ -49,7 +49,7 @@ export default async function Post({ params: { postId } }: Props) {
 
     // Temporary a tag instead of Link tag due to bug.
     const tags = meta.tags.map((tag, i) => (
-        <Link key={i} href={`/tags/${tag}`}>{tag}</Link>
+        <a key={i} href={`/tags/${tag}`}>{tag}</a>
     ))
 
     return (
