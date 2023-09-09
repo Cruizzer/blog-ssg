@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import 'highlight.js/styles/github-dark.css'
 
-export const revalidate = 60//86400
+export const revalidate = 43200//86400
 
 type Props = {
     params: {
@@ -47,6 +47,7 @@ export default async function Post({ params: { postId } }: Props) {
 
     const pubDate = getFormattedDate(meta.date)
 
+    // Temporary a tag instead of Link tag due to bug.
     const tags = meta.tags.map((tag, i) => (
         <a key={i} href={`/tags/${tag}`}>{tag}</a>
     ))
