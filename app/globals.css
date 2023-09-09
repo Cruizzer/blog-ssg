@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    --scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
+}
+
 blockquote {
     font-size: 1.1em;
     line-height:1.6;
@@ -12,10 +17,9 @@ blockquote {
 
 blockquote:hover {
     background-color: #CD5D67;
-    transition-delay: 100ms;
-
+    transition-delay: 50ms;
     transition-timing-function:cubic-bezier(0.075, 0.82, 0.165, 1);
-    transition-duration: 800ms;
+    transition-duration: 600ms;
 }
 
 blockquote > p {
