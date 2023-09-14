@@ -4,7 +4,7 @@ export default async function Daily() {
     const gospelContent = await getDailyGospel()
 
     if (!gospelContent) {
-        return <p className="mt-10 text-center">Sorry, cannot fetch daily Gospel.</p>
+        return <p className="mt-10 text-center text-xl">Sorry, cannot fetch daily Gospel.</p>
     }
 
     return (
@@ -24,6 +24,7 @@ export default async function Daily() {
                         )}
                 </div>
             </blockquote>
+            <footer className="text-xs">{gospelContent.copyright}</footer>
         </section>
     )
 }
