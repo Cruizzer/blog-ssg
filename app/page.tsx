@@ -1,5 +1,6 @@
 import Posts from "./components/Posts"
 import MyProfilePic from './components/MyProfilePic'
+import DailyGospel from "./components/DailyGospel"
 
 export const revalidate = 43200//86400
 

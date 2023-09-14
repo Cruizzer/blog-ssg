@@ -14,9 +14,9 @@ blockquote {
     font-style: normal;
     content: none;
 }
-
+/* CD5D67 */
+/* dd878e */
 blockquote:hover {
-    background-color: #CD5D67;
     transition-delay: 50ms;
     transition-timing-function:cubic-bezier(0.075, 0.82, 0.165, 1);
     transition-duration: 600ms;
@@ -39,7 +39,6 @@ blockquote > p:first-of-type::after {
 
 blockquote::before {
     content: "\201C";
-    color:#C98556;
     font-size: 4em;
     position: absolute;
     left: 10px;
