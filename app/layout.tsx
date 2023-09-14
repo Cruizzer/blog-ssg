@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 
 
 export const metadata: Metadata = {
-  title: "Cruizzers's Blog",
+  title: "Cruizzer's Blog",
   description: 'Created by Hansel D\'Cruz',
 }
 
