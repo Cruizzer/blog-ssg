@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function MyProfilePic() {
     return (
@@ -12,5 +12,5 @@ export default function MyProfilePic() {
                 priority={true}
             />
         </section>
-    )
+    );
 }

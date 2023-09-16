@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export default function NotFound() {
     return (
@@ -6,5 +6,5 @@ export default function NotFound() {
             <p className="mt-10">Sorry, the requested post does not exist.</p>
             <Link href="/">Back to Home</Link>
         </div>
-    )
+    );
 }

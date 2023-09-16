@@ -1,56 +1,56 @@
-import getFormattedDate from "@/lib/getFormattedDate"
-import { getPostsMeta, getPostByName } from "@/lib/posts"
-import { notFound } from "next/navigation"
-import Link from "next/link"
-import 'highlight.js/styles/github-dark.css'
+import getFormattedDate from "@/lib/getFormattedDate";
+import { getPostsMeta, getPostByName } from "@/lib/posts";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import "highlight.js/styles/github-dark.css";
 
-export const revalidate = 43200//86400
+export const revalidate = 43200; //86400
 
 type Props = {
     params: {
-        postId: string
-    }
-}
+        postId: string;
+    };
+};
 
 export async function generateStaticParams() {
-    const posts = await getPostsMeta() //deduped!
+    const posts = await getPostsMeta(); //deduped!
 
-    if (!posts) return []
+    if (!posts) return [];
 
     return posts.map((post) => ({
-        postId: post.id
-    }))
+        postId: post.id,
+    }));
 }
 
 export async function generateMetadata({ params: { postId } }: Props) {
-
-    const post = await getPostByName(`${postId}.mdx`) //deduped!
+    const post = await getPostByName(`${postId}.mdx`); //deduped!
 
     if (!post) {
         return {
-            title: 'Post Not Found'
-        }
+            title: "Post Not Found",
+        };
     }
 
     return {
         title: post.meta.title,
-    }
+    };
 }
 
 export default async function Post({ params: { postId } }: Props) {
+    const post = await getPostByName(`${postId}.mdx`); //deduped!
 
-    const post = await getPostByName(`${postId}.mdx`) //deduped!
+    if (!post) notFound();
 
-    if (!post) notFound()
+    const { meta, content } = post;
 
-    const { meta, content } = post
-
-    const pubDate = getFormattedDate(meta.date)
+    const pubDate = getFormattedDate(meta.date);
 
     // Temporary a tag instead of Link tag due to bug.
     const tags = meta.tags.map((tag, i) => (
-        <a key={i} href={`/tags/${tag}`}>{tag}</a>
-    ))
+        <a key={i} href={`/tags/${tag}`}>
+            {tag}
+        </a>
+    ));
 
     return (
         <>
@@ -60,13 +60,13 @@ export default async function Post({ params: { postId } }: Props) {
                     <p className="mt-0 text-sm">{pubDate}</p>
                 </div>
                 <p>
-                    <Link className= "mx-4" href="/">← Back to home</Link>
+                    <Link className="mx-4" href="/">
+                        ← Back to home
+                    </Link>
                 </p>
             </div>
             {/* Footnotes Adjusted */}
-            <article className="prose-light dark:prose-dark">
-                {content}
-            </article>
+            <article className="prose-light dark:prose-dark">{content}</article>
             <section>
                 <h3>Related:</h3>
                 <div className="mb-5 flex flex-row gap-4 items-center flex-wrap">
@@ -74,5 +74,5 @@ export default async function Post({ params: { postId } }: Props) {
                 </div>
             </section>
         </>
-    )
+    );
 }

@@ -1,4 +1,4 @@
-import {load} from "cheerio"
+import { load } from "cheerio";
 
 interface Mass {
     heading: string;
@@ -28,20 +28,21 @@ interface JSONData {
 }
 
 export async function getDailyGospel() {
-
     let date = new Date();
     let year = date.getFullYear();
-    let month = (date.getMonth() + 1).toString().padStart(2, '0');
-    let day = date.getDate().toString().padStart(2, '0');
+    let month = (date.getMonth() + 1).toString().padStart(2, "0");
+    let day = date.getDate().toString().padStart(2, "0");
     let formattedDate = `${year}${month}${day}`;
     const dailyReadingsURL: string = `https://universalis.com/Europe.England.Leeds/${formattedDate}/jsonpmass.js`;
 
     try {
-        const response = await fetch(dailyReadingsURL).then(res => res.text());
+        const response = await fetch(dailyReadingsURL).then((res) =>
+            res.text()
+        );
         const gospel = response.substring(20, response.length - 3);
         const parsedGospel: JSONData = JSON.parse(gospel);
         const paragraphs: string[] = [];
-        
+
         // Parse the 'text' property of Mass_G using Cheerio.
         const $Gospel = load(parsedGospel.Mass_G.text);
 
@@ -53,16 +54,17 @@ export async function getDailyGospel() {
             }
         });
 
-        const copyright = (load(parsedGospel.copyright.text))("div").text().trim();
+        const copyright = load(parsedGospel.copyright.text)("div")
+            .text()
+            .trim();
 
         return {
             readingDate: parsedGospel.date,
             source: parsedGospel.Mass_G.source,
             heading: parsedGospel.Mass_G.heading,
             paragraphs,
-            copyright
-        }
-
+            copyright,
+        };
     } catch (error) {
         console.error("Error fetching and parsing daily reading:", error);
     }

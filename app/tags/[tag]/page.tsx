@@ -1,41 +1,41 @@
-import { getPostsMeta } from "@/lib/posts"
-import ListItem from "@/app/components/ListItem"
-import Link from "next/link"
+import { getPostsMeta } from "@/lib/posts";
+import ListItem from "@/app/components/ListItem";
+import Link from "next/link";
 
-export const revalidate = 43200
+export const revalidate = 43200;
 
 type Props = {
     params: {
-        tag: string
-    }
-}
+        tag: string;
+    };
+};
 
 export async function generateStaticParams() {
-    const posts = await getPostsMeta() //deduped!
+    const posts = await getPostsMeta(); //deduped!
 
-    if (!posts) return []
+    if (!posts) return [];
 
-    const tags = new Set(posts.map(post => post.tags).flat())
+    const tags = new Set(posts.map((post) => post.tags).flat());
 
-    return Array.from(tags).map((tag) => ({ tag }))
+    return Array.from(tags).map((tag) => ({ tag }));
 }
 
 export function generateMetadata({ params: { tag } }: Props) {
+    const decodedTag = decodeURIComponent(tag);
 
-    const decodedTag = decodeURIComponent(tag) 
-    
     return {
-        title: `Posts about ${decodedTag}`
-    }
+        title: `Posts about ${decodedTag}`,
+    };
 }
 
 export default async function TagPostList({ params: { tag } }: Props) {
-    const posts = await getPostsMeta() //deduped!
+    const posts = await getPostsMeta(); //deduped!
 
-    if (!posts) return <p className="mt-10 text-center">Sorry, no posts available.</p>
+    if (!posts)
+        return <p className="mt-10 text-center">Sorry, no posts available.</p>;
 
-    const decodedTag = decodeURIComponent(tag) 
-    const tagPosts = posts.filter(post => post.tags.includes(decodedTag))
+    const decodedTag = decodeURIComponent(tag);
+    const tagPosts = posts.filter((post) => post.tags.includes(decodedTag));
 
     if (!tagPosts.length) {
         return (
@@ -43,7 +43,7 @@ export default async function TagPostList({ params: { tag } }: Props) {
                 <p className="mt-10">Sorry, no posts for that keyword.</p>
                 <Link href="/">Back to Home</Link>
             </div>
-        )
+        );
     }
 
     return (
@@ -51,11 +51,11 @@ export default async function TagPostList({ params: { tag } }: Props) {
             <h2 className="text-3xl mt-4 mb-0">Results for: {decodedTag}</h2>
             <section className="mt-6 mx-auto max-w-2xl">
                 <ul className="w-full list-none p-0">
-                    {tagPosts.map(post => (
+                    {tagPosts.map((post) => (
                         <ListItem key={post.id} post={post} />
                     ))}
                 </ul>
             </section>
         </>
-    )
+    );
 }

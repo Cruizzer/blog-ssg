@@ -9,7 +9,7 @@ html {
 
 blockquote {
     font-size: 1.1em;
-    line-height:1.6;
+    line-height: 1.6;
     position: relative;
     font-style: normal;
     content: none;
@@ -18,7 +18,7 @@ blockquote {
 /* dd878e */
 blockquote:hover {
     transition-delay: 50ms;
-    transition-timing-function:cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     transition-duration: 600ms;
 }
 
@@ -42,11 +42,11 @@ blockquote::before {
     font-size: 4em;
     position: absolute;
     left: 10px;
-    top:-10px;
+    top: -10px;
 }
 
 blockquote::after {
-    content: '';
+    content: "";
 }
 
 .footnotes > ol {
@@ -62,7 +62,6 @@ blockquote::after {
 .footnotes > ol > li > p > a {
     text-decoration: none;
 }
-
 
 /* 
 [&>.footnotes>ol]:flex

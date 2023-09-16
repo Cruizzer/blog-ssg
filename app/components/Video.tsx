@@ -1,6 +1,6 @@
 type Props = {
-    id: string
-}
+    id: string;
+};
 
 export default function Video({ id }: Props) {
     return (

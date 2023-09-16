@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { FaYoutube, FaTwitter, FaGithub, FaLaptop } from "react-icons/fa"
+import Link from "next/link";
+import { FaYoutube, FaTwitter, FaGithub, FaLaptop } from "react-icons/fa";
 
 export default function Navbar() {
     return (
@@ -7,11 +7,21 @@ export default function Navbar() {
             <div className="px-4 md:px-12 lg:px-36 prose prose-lg max-w-none flex justify-between flex-col sm:flex-row">
                 <div className="flex items-center gap-6 p-0">
                     <h1 className="text-2xl font-light text-white place-content-center mb-2 md:mb-0">
-                        <Link href="/" className="text-white/90 no-underline hover:text-white">Home</Link>
+                        <Link
+                            href="/"
+                            className="text-white/90 no-underline hover:text-white"
+                        >
+                            Home
+                        </Link>
                     </h1>
 
                     <h1 className="text-xl font-light text-white place-content-center mb-2 md:mb-0">
-                        <Link href="/daily-prayer" className="text-white/90 no-underline hover:text-white">Daily Prayer</Link>
+                        <Link
+                            href="/daily-prayer"
+                            className="text-white/90 no-underline hover:text-white"
+                        >
+                            Daily Prayer
+                        </Link>
                     </h1>
                 </div>
 
@@ -19,14 +29,20 @@ export default function Navbar() {
                     <Link className="text-white/90 hover:text-white" href="/">
                         <FaYoutube />
                     </Link>
-                    <Link className="text-white/90 hover:text-white" href="https://github.com/Cruizzer">
+                    <Link
+                        className="text-white/90 hover:text-white"
+                        href="https://github.com/Cruizzer"
+                    >
                         <FaGithub />
                     </Link>
-                    <Link className="text-white/90 hover:text-white" href="https://twitter.com/hansel_dz">
+                    <Link
+                        className="text-white/90 hover:text-white"
+                        href="https://twitter.com/hansel_dz"
+                    >
                         <FaTwitter />
                     </Link>
                 </div>
             </div>
         </nav>
-    )
+    );
 }
