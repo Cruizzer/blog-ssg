@@ -54,14 +54,17 @@ export async function getDailyGospel() {
             }
         });
 
+        const readingDate = load(parsedGospel.date).text().trim();
+        const source = load(parsedGospel.Mass_G.source).text().trim();
+        const heading = load(parsedGospel.Mass_G.heading).text().trim();
         const copyright = load(parsedGospel.copyright.text)("div")
             .text()
             .trim();
 
         return {
-            readingDate: parsedGospel.date,
-            source: parsedGospel.Mass_G.source,
-            heading: parsedGospel.Mass_G.heading,
+            readingDate,
+            source,
+            heading,
             paragraphs,
             copyright,
         };
