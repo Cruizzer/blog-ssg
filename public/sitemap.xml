@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://your-domain.com/favicon.ico</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/posts/Thomas_Pink_Religious_Liberty</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/posts/Obedience_To_Parents</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/posts/Servile_Work</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/posts/Oath_Against_Modernism</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/test</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Thomas Pink</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Dignitatis Humanae</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Vatican II</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Religious Liberty</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Council of Trent</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Church and State</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Quod Aliquantulum</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/St. Thomas Aquinas</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Catechism of the Catholic Church</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Ten Commandments</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Fourth Commandment</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Moral Theology</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Servile Work</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Sabbath</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Third Commandment</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Baltimore Catechism</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Catechism of Pope St. Pius X</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Catechism of the Council of Trent</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Theologica Moralis</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/Fr. Bausenbaum, SJ.</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/St. Alphonsus Liguori</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/next.js</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/nextjs</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://your-domain.com/tags/new</loc><lastmod>2023-09-16T17:08:13.126Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Justin Martyr</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Irenaeus</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/St. Augustine</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Chrysostom</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Athanasius</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Basil</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Ambrose</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Gregory the Great II</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Mark 13:32</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Matt 24:36</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Thomas Pink</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Dignitatis Humanae</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Vatican II</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Religious Liberty</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Council of Trent</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Church and State</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Quod Aliquantulum</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/St. Thomas Aquinas</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Catechism of the Catholic Church</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Ten Commandments</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Fourth Commandment</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Moral Theology</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Servile Work</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Sabbath</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Third Commandment</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Baltimore Catechism</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Catechism of Pope St. Pius X</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Catechism of the Council of Trent</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Theologica Moralis</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/Fr. Bausenbaum, SJ.</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/St. Alphonsus Liguori</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/next.js</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/nextjs</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/tags/new</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/favicon.ico</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/posts/Nor_The_Son</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/posts/Thomas_Pink_Religious_Liberty</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/posts/Obedience_To_Parents</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/posts/Servile_Work</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://your-domain.com/posts/Oath_Against_Modernism</loc><lastmod>2024-02-06T12:34:51.106Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
