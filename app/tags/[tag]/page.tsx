@@ -11,7 +11,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-    const posts = await getPostsMeta(); //deduped!
+    const posts = await getPostsMeta(); // deduped!
 
     if (!posts) return [];
 
@@ -29,13 +29,18 @@ export function generateMetadata({ params: { tag } }: Props) {
 }
 
 export default async function TagPostList({ params: { tag } }: Props) {
-    const posts = await getPostsMeta(); //deduped!
+    const posts = await getPostsMeta(); // deduped!
 
-    if (!posts)
+    if (!posts) {
         return <p className="mt-10 text-center">Sorry, no posts available.</p>;
+    }
 
     const decodedTag = decodeURIComponent(tag);
-    const tagPosts = posts.filter((post) => post.tags.includes(decodedTag));
+
+    // Add a check for post.tags to prevent the TypeError
+    const tagPosts = posts.filter(
+        (post) => post.tags && post.tags.includes(decodedTag)
+    );
 
     if (!tagPosts.length) {
         return (
