@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import "highlight.js/styles/github-dark.css";
 
-export const revalidate = 43200; //86400
+export const revalidate = 300; //86400
 
 type Props = {
     params: {
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-    const posts = await getPostsMeta(); //deduped!
+    const posts = await getPostsMeta(); // deduped!
 
     if (!posts) return [];
 
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params: { postId } }: Props) {
-    const post = await getPostByName(`${postId}.mdx`); //deduped!
+    const post = await getPostByName(`${postId}.mdx`); // deduped!
 
     if (!post) {
         return {
@@ -37,7 +37,7 @@ export async function generateMetadata({ params: { postId } }: Props) {
 }
 
 export default async function Post({ params: { postId } }: Props) {
-    const post = await getPostByName(`${postId}.mdx`); //deduped!
+    const post = await getPostByName(`${postId}.mdx`); // deduped!
 
     if (!post) notFound();
 
@@ -45,12 +45,14 @@ export default async function Post({ params: { postId } }: Props) {
 
     const pubDate = getFormattedDate(meta.date);
 
-    // Temporary a tag instead of Link tag due to bug.
-    const tags = meta.tags.map((tag, i) => (
-        <a key={i} href={`/tags/${tag}`}>
-            {tag}
-        </a>
-    ));
+    // Add a check for meta.tags to prevent the TypeError
+    const tags = Array.isArray(meta.tags)
+        ? meta.tags.map((tag, i) => (
+              <a key={i} href={`/tags/${tag}`}>
+                  {tag}
+              </a>
+          ))
+        : null;
 
     return (
         <>
