@@ -70,3 +70,13 @@ blockquote::after {
 [&>.footnotes>ol>li]:-m-4 
 dark:[&>.footnotes>ol]:bg-gray-700
              */
+
+/* styles.css or your Tailwind CSS stylesheet */
+.grid {
+    /* max-width: 100%;/* Ensure the grid fits within the page */
+    /* margin: auto; Center the grid horizontally */
+}
+
+.grid-cell {
+    background-color: white; /* Set background color to white */
+}
