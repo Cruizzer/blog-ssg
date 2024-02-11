@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import "./WeeksToDie.css";
+import { FaArrowRight, FaArrowDown } from "react-icons/fa";
 
 const WeeksToDie = () => {
     const [birthdayYear, setBirthdayYear] = useState("");
@@ -67,8 +68,8 @@ const WeeksToDie = () => {
     }, [isWeekElapsed]);
 
     return (
-        <div className="m-6">
-            <div className="flex justify-center items-center mb-8">
+        <div className="m-6 relative">
+            <div className="flex justify-center items-center">
                 <label className="mx-2 text-zinc-200">Day:</label>
                 <input
                     type="text"
@@ -110,14 +111,21 @@ const WeeksToDie = () => {
                 <h1 className="text-red-500 text-sm font-bold mb-4">{error}</h1>
             )}
 
-            <h4>Weeks</h4>
-            <div className="flex justify-between">
-                <div className="ml-6">0</div>
-                <div className="relative left-2">52</div>
+            <div className="flex items-center">
+                <h4 className="inline-block">Weeks</h4>
+                <FaArrowRight className="ml-2 mt-5" />
             </div>
 
-            <div className="flex mt-2">
-                <div className="flex flex-col text-sm mr-6"></div>
+            <div className="flex flex-col mt-2 absolute left-[-100px] items-center">
+                <h4>Years</h4>
+                <FaArrowDown className="text-zinc-200" />
+            </div>
+
+            <div className="flex flex-col mt-2">
+                <div className="flex justify-between mb-2">
+                    <div className="">0</div>
+                    <div className="relative left-2">52</div>
+                </div>
 
                 <div className="grid gap-2.5 sm:gap-2.5 md:gap-2.5 lg:gap-2.5 w-full grid-cols-[repeat(26,minmax(0,1fr))] sm:grid-cols-[repeat(26,minmax(0,1fr))] md:grid-cols-[repeat(52,minmax(3.5px,1fr))] lg:grid-cols-[repeat(52,minmax(4px,1fr))]">
                     {Array.from({ length: 52 * 90 }).map((_, index) => (
@@ -125,7 +133,7 @@ const WeeksToDie = () => {
                             key={index}
                             className={`grid-cell w-3 h-3 sm:w-3 sm:h-3 md:w-[11px] md:h-[11px] lg:w-3 lg:h-3 ${
                                 index < isWeekElapsed
-                                    ? "bg-orange-500"
+                                    ? "bg-[#1e7dad]"
                                     : "bg-white"
                             }`}
                         >
