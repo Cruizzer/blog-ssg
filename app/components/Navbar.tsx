@@ -15,14 +15,25 @@ export default function Navbar() {
                         </Link>
                     </h1>
 
-                    <h1 className="text-xl font-light text-white place-content-center mb-2 md:mb-0">
-                        <Link
-                            href="/daily-prayer"
-                            className="text-white/90 no-underline hover:text-white"
-                        >
-                            Daily Prayer
-                        </Link>
-                    </h1>
+                    <div className="group relative">
+                        <h1 className="text-xl font-light text-white place-content-center mb-2 md:mb-0">
+                            <Link
+                                href="/daily-prayer"
+                                className="text-white/90 no-underline hover:text-white"
+                            >
+                                Daily Prayer
+                            </Link>
+                        </h1>
+
+                        <div className="absolute hidden group-hover:block bg-slate-700 p-2 space-y-4 rounded-md shadow-lg w-48 top-full">
+                            <Link
+                                href="/study"
+                                className="text-white/90 no-underline hover:text-white"
+                            >
+                                Study Prayer
+                            </Link>
+                        </div>
+                    </div>
 
                     <div className="group relative">
                         <h1 className="text-xl font-light text-white place-content-center mb-2 md:mb-0">
@@ -35,7 +46,7 @@ export default function Navbar() {
                         </h1>
 
                         {/* Dropdown menu for "Trackers" link */}
-                        <div className="absolute hidden group-hover:block bg-slate-700 p-2 space-y-2 rounded-md shadow-lg w-48 top-full">
+                        <div className="absolute hidden group-hover:block bg-slate-700 p-2 space-y-4 rounded-md shadow-lg w-48 top-full">
                             <Link
                                 href="/death"
                                 className="text-gray-300 hover:text-white no-underline"
