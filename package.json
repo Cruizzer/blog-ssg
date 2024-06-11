@@ -10,6 +10,7 @@
         "postbuild": "next-sitemap"
     },
     "dependencies": {
+        "@types/mongoose": "^5.11.97",
         "@types/node": "18.15.5",
         "@types/react": "18.0.28",
         "@types/react-dom": "18.0.11",
@@ -17,6 +18,8 @@
         "eslint": "8.36.0",
         "eslint-config-next": "13.2.4",
         "highlight.js": "^11.8.0",
+        "mongodb": "^6.7.0",
+        "mongoose": "^8.4.1",
         "next": "^13.4.0",
         "next-mdx-remote": "^4.4.1",
         "next-sitemap": "^4.0.9",

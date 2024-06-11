@@ -3,6 +3,7 @@ import { getPostsMeta, getPostByName } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import "highlight.js/styles/github-dark.css";
+import CommentSection from "@/app/components/CommentSection";
 
 export const revalidate = 300; //86400
 
@@ -67,13 +68,24 @@ export default async function Post({ params: { postId } }: Props) {
                     </Link>
                 </p>
             </div>
-            {/* Footnotes Adjusted */}
+            {/* Content */}
             <article className="prose-light dark:prose-dark">{content}</article>
+
+            {/* Tags */}
             <section>
                 <h3>Related:</h3>
                 <div className="mb-5 flex flex-row gap-4 items-center flex-wrap">
                     {tags}
                 </div>
+            </section>
+
+            {/* Comments */}
+            <section>
+                <h3>Comments:</h3>
+                <div className="mb-5">
+                    <p>Comments are not yet available.</p>
+                </div>
+                <CommentSection postId={postId} />
             </section>
         </>
     );
