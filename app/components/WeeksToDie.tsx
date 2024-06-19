@@ -62,17 +62,18 @@ const WeeksToDie = () => {
                 cell.classList.add("pop-out");
                 setTimeout(() => {
                     cell.classList.remove("pop-out");
-                }, 500);
+                }, 600);
             }
         });
     }, [isWeekElapsed]);
 
     return (
-        <div className="m-6 relative">
-            <div className="flex justify-center items-center">
+        <div className="m-6 flex flex-col items-center ">
+            <div className="flex justify-center items-center flex-wrap">
                 <label className="mx-2 text-zinc-200">Day:</label>
                 <input
                     type="text"
+                    style={{ width: "3rem", color: "#484547"}}
                     value={birthdayDay}
                     onChange={(e) => {
                         setBirthdayDay(e.target.value);
@@ -84,6 +85,7 @@ const WeeksToDie = () => {
                 <label className="mx-2 text-zinc-200">Month:</label>
                 <input
                     type="text"
+                    style={{ width: "3rem", color: "#484547"}}
                     value={birthdayMonth}
                     onChange={(e) => setBirthdayMonth(e.target.value)}
                     placeholder="MM"
@@ -93,6 +95,7 @@ const WeeksToDie = () => {
                 <label className="mx-2 text-zinc-200">Year:</label>
                 <input
                     type="text"
+                    style={{color: "#484547"}}
                     value={birthdayYear}
                     onChange={(e) => setBirthdayYear(e.target.value)}
                     placeholder="YYYY"
@@ -101,7 +104,7 @@ const WeeksToDie = () => {
 
                 <button
                     onClick={handleSubmit}
-                    className="ml-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
+                    className="ml-4 my-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
                 >
                     Submit
                 </button>
@@ -111,34 +114,37 @@ const WeeksToDie = () => {
                 <h1 className="text-red-500 text-sm font-bold mb-4">{error}</h1>
             )}
 
-            <div className="flex items-center">
-                <h4 className="inline-block">Weeks</h4>
-                <FaArrowRight className="ml-2 mt-5" />
-            </div>
+            
 
-            <div className="flex flex-col mt-2 absolute left-[-100px] items-center">
-                <h4>Years</h4>
-                <FaArrowDown className="text-zinc-200" />
-            </div>
-
-            <div className="flex flex-col mt-2">
-                <div className="flex justify-between mb-2">
-                    <div className="">0</div>
-                    <div className="relative left-2">52</div>
+            <div className="relative flex flex-col mt-2 ">
+                
+                <div className=" flex flex-row justify-end items-start my-2">
+                    <div className="mr-1.5 font-semibold text-white">Weeks</div>
+                    <FaArrowRight className="mt-1 text-zinc-200" />
                 </div>
 
-                <div className="grid gap-2.5 sm:gap-2.5 md:gap-2.5 lg:gap-2.5 w-full grid-cols-[repeat(26,minmax(0,1fr))] sm:grid-cols-[repeat(26,minmax(0,1fr))] md:grid-cols-[repeat(52,minmax(3.5px,1fr))] lg:grid-cols-[repeat(52,minmax(4px,1fr))]">
+                <div className="absolute top-0 left-[-6rem] ">
+                    <h4>Years</h4>
+                    <FaArrowDown className="text-zinc-200" />
+                </div>
+
+                <div className="flex justify-between">
+                    <div className="text-sm">0</div>
+                    <div className="text-sm">52</div>
+                </div>
+
+                <div className="grid gap-y-[3px] gap-x-[2px] grid-cols-[repeat(26,minmax(0,1fr))] sm:grid-cols-[repeat(26,minmax(0,1fr))] md:grid-cols-[repeat(52,minmax(3.5px,1fr))] lg:grid-cols-[repeat(52,minmax(0px,10px))]">
                     {Array.from({ length: 52 * 90 }).map((_, index) => (
                         <div
                             key={index}
-                            className={`grid-cell w-3 h-3 sm:w-3 sm:h-3 md:w-[11px] md:h-[11px] lg:w-3 lg:h-3 ${
+                            className={`grid-cell w-[8px] h-[8px] ${
                                 index < isWeekElapsed
                                     ? "bg-[#1e7dad]"
                                     : "bg-white"
                             }`}
                         >
                             {index % 260 == 0 && (
-                                <p className="m-0 relative right-7 bottom-1.5">
+                                <p className="m-0 relative right-7 bottom-1.5 text-sm">
                                     {(index / 260) * 5}
                                 </p>
                             )}
