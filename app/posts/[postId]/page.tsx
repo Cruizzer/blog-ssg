@@ -81,10 +81,6 @@ export default async function Post({ params: { postId } }: Props) {
 
             {/* Comments */}
             <section>
-                <h3>Comments:</h3>
-                <div className="mb-5">
-                    <p>Comments are not yet available.</p>
-                </div>
                 <CommentSection postId={postId} />
             </section>
         </>

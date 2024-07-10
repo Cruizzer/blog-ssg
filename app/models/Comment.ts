@@ -1,14 +1,15 @@
-import mongoose, { Schema, model, Document } from 'mongoose';
+import { Schema, model, models, Document } from 'mongoose';
 
 interface IComment extends Document {
-    page: string;
+    postId: string;
     text: string;
-    authorId: string;
+    author: string;
     date: Date;
+    profileImage?: string;
 }
 
 const commentSchema = new Schema<IComment>({
-    page: {
+    postId: {
         type: String,
         required: true,
     },
@@ -16,7 +17,7 @@ const commentSchema = new Schema<IComment>({
         type: String,
         required: true,
     },
-    authorId: {
+    author: {
         type: String,
         required: true,
     },
@@ -24,9 +25,12 @@ const commentSchema = new Schema<IComment>({
         type: Date,
         required: true,
     },
+    profileImage: {
+        type: String,
+    },
 
 });
 
-const Comment = mongoose.models.Comment || model<IComment>('Comment', commentSchema);
+const Comment = models.Comment || model<IComment>('Comment', commentSchema);
 
 export default Comment;

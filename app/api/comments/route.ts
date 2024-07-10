@@ -1,14 +1,19 @@
 import dbConnect from "@/lib/mongo";
 import Comment from "@/app/models/Comment";
+import User from "@/app/models/User";
 import { NextResponse } from "next/server";
+
+// Session
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET(req: Request) {
     try {
         await dbConnect();
         const { searchParams } = new URL(req.url);
-        const param: string | null = searchParams.get("page");
+        const param: string | null = searchParams.get("postId");
 
-        const comments = await Comment.find({ page: param });
+        const comments = await Comment.find({ postId: param });
 
         return NextResponse.json(comments);
     } catch (err: any) {
@@ -17,14 +22,22 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+    // Get session
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        return NextResponse.json({ error: "Unauthorized" });
+    }
+
     try {
         await dbConnect();
         const comment = await req.json();
 
-        const authorId = 999; // Change to user_id
+        const author = session.user?.email;
         const date = new Date();
 
-        const { page, text } = comment;
+        const { postId, text } = comment;
+        const profileImage = session.user?.image;
 
         console.log(comment);
 
@@ -37,12 +50,23 @@ export async function POST(req: Request) {
         //     return NextResponse.json({ error: "Unauthorized" });
         // }
 
-
-        if (!page || !text) {
+        // Can use refactoring.
+        if (!postId || !text || !author) {
             return NextResponse.json({ error: "Missing required fields" });
         }
 
-        await Comment.create({ page, text, authorId, date });
+        // Logic to limit comments per post by user to 10
+        const userComments = await Comment.find({ postId, author });
+
+        if (userComments.length >= 3) {
+            console.log("Comment cannot be added!")
+            return NextResponse.json({ error: "Comment limit reached" });
+        } else {
+            console.log("Comment added!")
+        }
+        
+
+        await Comment.create({ postId, text, author, date, profileImage });
 
         return Response.json({ message: "Comment submitted successfully" });
     } catch (error) {

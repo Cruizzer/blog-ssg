@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { FaYoutube, FaTwitter, FaGithub } from "react-icons/fa";
+import SignInButton from "./SignInButton";
+
 
 export default function Navbar() {
     return (
@@ -56,6 +60,8 @@ export default function Navbar() {
                             {/* Add more child links as needed */}
                         </div>
                     </div>
+
+                    <SignInButton />
                 </div>
 
                 <div className="flex flex-row justify-center sm:justify-evenly align-middle gap-4 text-white text-4xl lg:text-5xl">

@@ -1,0 +1,41 @@
+/* Global Styles for the MDX Editor Toolbar */
+
+.mdx-editor-toolbar {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap; /* Prevent wrapping of toolbar items */
+  }
+  
+  .mdx-editor-toolbar > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mdx-editor-toolbar button {
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .mdx-editor-toolbar button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .mdx-editor-toolbar button:active {
+    background-color: #ccc;
+  }
+  
+  .mdx-editor-toolbar button:focus {
+    outline: none;
+    /* box-shadow: 0 0 0 2px #0070f3; */
+  }
+  

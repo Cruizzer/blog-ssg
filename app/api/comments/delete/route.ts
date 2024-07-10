@@ -7,7 +7,7 @@ export async function GET(req: Request) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const param: string | null = searchParams.get("page");
-        const result = await Comment.deleteMany({page: param});
+        const result = await Comment.deleteMany({postId: param});
 
         if (result.deletedCount > 0) {
             return NextResponse.json({message: `${result.deletedCount} Comments deleted successfully`});

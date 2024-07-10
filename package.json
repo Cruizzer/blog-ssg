@@ -10,6 +10,7 @@
         "postbuild": "next-sitemap"
     },
     "dependencies": {
+        "@mdxeditor/editor": "^3.8.0",
         "@types/mongoose": "^5.11.97",
         "@types/node": "18.15.5",
         "@types/react": "18.0.28",
@@ -21,10 +22,12 @@
         "mongodb": "^6.7.0",
         "mongoose": "^8.4.1",
         "next": "^13.4.0",
+        "next-auth": "^4.24.7",
         "next-mdx-remote": "^4.4.1",
         "next-sitemap": "^4.0.9",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-hook-form": "^7.52.1",
         "react-icons": "^4.8.0",
         "rehype-autolink-headings": "^6.1.1",
         "rehype-highlight": "^6.0.0",
