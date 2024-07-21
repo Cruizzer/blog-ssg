@@ -1,14 +1,14 @@
 import React from "react";
-import DailyGospel from "../components/DailyGospel";
+import Gospel from "../components/DailyGospel";
 export const dynamic = "force-dynamic";
 
-const DailyPrayer = () => {
+const DailyGospel = () => {
     return (
         <>
             {/* @ts-expect-error Server Component */}
-            <DailyGospel />
+            <Gospel />
         </>
     );
 };
 
-export default DailyPrayer;
+export default DailyGospel;

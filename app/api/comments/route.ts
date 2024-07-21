@@ -68,7 +68,7 @@ export async function POST(req: Request) {
 
         await Comment.create({ postId, text, author, date, profileImage });
 
-        return Response.json({ message: "Comment submitted successfully" });
+        return NextResponse.json({ message: "Comment submitted successfully" });
     } catch (error) {
         console.error("An error occurred while submitting comment:", error);
         throw new Error("Failed to submit comment");

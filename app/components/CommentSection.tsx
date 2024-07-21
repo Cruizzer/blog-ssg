@@ -5,19 +5,19 @@ import React, { useState, useEffect } from 'react';
 type Comment = {
   postId: string;
   text: string;
-  author: string;
-  date: string;
-  profileImage: string;
+  author?: string;
+  date?: string;
+  profileImage?: string;
 };
 
 const CommentSection: React.FC<{ postId: string }> = ({ postId }) => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [commentText, setCommentText] = useState('');
+  const [loading, setLoading] = useState(false); // New loading state
 
   useEffect(() => {
-    // Fetch comments when the component mounts
     fetchComments(postId);
-  }, [postId]); // Re-fetch comments whenever the page prop changes
+  }, [postId]);
 
   const fetchComments = async (postId: string) => {
     try {
@@ -26,7 +26,6 @@ const CommentSection: React.FC<{ postId: string }> = ({ postId }) => {
         throw new Error('Failed to fetch comments');
       }
       const data = await response.json();
-      console.log(data);
       setComments(data);
     } catch (error) {
       console.error('Error fetching comments:', error);
@@ -35,14 +34,12 @@ const CommentSection: React.FC<{ postId: string }> = ({ postId }) => {
 
   const handleCommentSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const newComment: Comment = {
+    setLoading(true); // Set loading to true when starting the submit process
+    const newComment = {
       text: commentText,
       postId
     };
-    setComments([...comments, newComment]);
-    setCommentText('');
 
-    // You can also submit the new comment to the API if needed
     try {
       const response = await fetch('/api/comments', {
         method: 'POST',
@@ -55,11 +52,13 @@ const CommentSection: React.FC<{ postId: string }> = ({ postId }) => {
       if (!response.ok) {
         throw new Error('Failed to submit comment');
       }
-      // Fetch comments again to update the list after submitting a new comment
-      fetchComments(postId);
 
+      setCommentText(''); // Clear the input field
+      fetchComments(postId); // Fetch comments again after submitting a new comment
     } catch (error) {
       console.error('Error submitting comment:', error);
+    } finally {
+      setLoading(false); // Set loading to false after the request is complete
     }
   };
 
@@ -70,10 +69,10 @@ const CommentSection: React.FC<{ postId: string }> = ({ postId }) => {
         {comments.length ? (
           comments.map((comment, index) => (
             <li key={index} className="p-4 bg-gray-700 rounded-lg shadow flex items-start space-x-4">
-              <img src={comment.profileImage} alt="Cannot Load" className="w-12 h-12 rounded-full" />
+              <img src={comment.profileImage || 'defaultProfileImageUrl'} alt="Profile" className="w-12 h-12 rounded-full" />
               <div>
-                <p className="text-sm text-gray-400">{comment.author}</p>
-                <p className="text-xs text-gray-500">{new Date(comment.date).toLocaleDateString()}</p>
+                <p className="text-sm text-gray-400">{comment.author || 'Unknown User'}</p>
+                <p className="text-xs text-gray-500">{comment.date ? new Date(comment.date).toLocaleDateString() : 'Unknown date'}</p>
                 <p className="mt-2">{comment.text}</p>
               </div>
             </li>
@@ -84,7 +83,7 @@ const CommentSection: React.FC<{ postId: string }> = ({ postId }) => {
           </div>
         )}
       </ul>
-  
+
       <form onSubmit={handleCommentSubmit} className="space-y-4">
         <input
           type="text"
@@ -92,15 +91,14 @@ const CommentSection: React.FC<{ postId: string }> = ({ postId }) => {
           onChange={(e) => setCommentText(e.target.value)}
           placeholder="Add a comment"
           className="w-full p-2 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
+          disabled={loading} // Disable the input if loading
         />
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-          Submit
+        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" disabled={loading}>
+          {loading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
     </div>
   );
-  
-  
 };
 
 export default CommentSection;

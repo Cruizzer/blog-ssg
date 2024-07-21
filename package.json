@@ -10,7 +10,6 @@
         "postbuild": "next-sitemap"
     },
     "dependencies": {
-        "@mdxeditor/editor": "^3.8.0",
         "@types/mongoose": "^5.11.97",
         "@types/node": "18.15.5",
         "@types/react": "18.0.28",

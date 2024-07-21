@@ -29,6 +29,7 @@ export const authOptions : NextAuthOptions = {
             await User.create({
               email: profile.email,
               name: profile.name,
+              // @ts-ignore
               image: profile.picture,
               numPosts: 0
             })
