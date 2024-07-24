@@ -5,6 +5,7 @@ interface IUser extends Document {
     name: string;
     image: string;
     numPosts: number;
+    admin?: boolean;
 }
 
 const userSchema = new Schema<IUser>({
@@ -24,7 +25,12 @@ const userSchema = new Schema<IUser>({
         type: Number,
         required: true,
     },
-});
+    admin: {
+        type: Boolean,
+        default: false,
+    },
+    
+},{ timestamps: true});
 
 const User = models.User || model<IUser>('User', userSchema);
 

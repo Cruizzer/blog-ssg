@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaYoutube, FaTwitter, FaGithub } from "react-icons/fa";
 import SignInButton from "./SignInButton";
 import DailyPrayerDropdown from "./DailyPrayerDropdown";
+import TrackerDropdown from "./TrackerDropdown";
 
 export default function Navbar() {
     return (
@@ -19,6 +20,7 @@ export default function Navbar() {
                     </Link>
                     
                     <DailyPrayerDropdown />
+                    <TrackerDropdown />
                 </div>
 
                 {/* Right side: Social Media Icons and Sign-In Button */}

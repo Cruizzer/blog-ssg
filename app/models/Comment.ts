@@ -1,6 +1,7 @@
-import { Schema, model, models, Document } from 'mongoose';
+import { Schema, model, models, Document, Types } from 'mongoose';
 
 interface IComment extends Document {
+    commentId: Types.ObjectId;
     postId: string;
     text: string;
     author: string;
@@ -9,6 +10,10 @@ interface IComment extends Document {
 }
 
 const commentSchema = new Schema<IComment>({
+    commentId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+    },
     postId: {
         type: String,
         required: true,
@@ -23,13 +28,13 @@ const commentSchema = new Schema<IComment>({
     },
     date: {
         type: Date,
+        default: Date.now,
         required: true,
     },
     profileImage: {
         type: String,
     },
-
-});
+}, { timestamps: true });
 
 const Comment = models.Comment || model<IComment>('Comment', commentSchema);
 
