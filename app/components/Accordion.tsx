@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
-import { styled } from '@mui/material/styles';
+import React, { useState } from 'react';
+import { styled, useTheme } from '@mui/material/styles';
+import { useMediaQuery, Box, Button } from '@mui/material';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
@@ -10,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Box from '@mui/material/Box';
 import { getDailyGospel } from '@/lib/readings';
 
 const Accordion = styled((props: AccordionProps) => (
@@ -65,13 +65,14 @@ const CustomFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
   '& .MuiTypography-root': {
     color: 'white',
   },
-
 }));
 
-
 export default function CustomizedAccordions() {
-  const [expanded, setExpanded] = React.useState<string | false>('');
-  const [checkedState, setCheckedState] = React.useState({
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const [expanded, setExpanded] = useState<string | false>('');
+  const [checkedState, setCheckedState] = useState({
     officeReadings: false,
     lauds: false,
     vespers: false,
@@ -80,9 +81,9 @@ export default function CustomizedAccordions() {
     none: false,
     compline: false,
   });
-  const [rosaryChecked, setRosaryChecked] = React.useState(false);
-  const [gospelChecked, setGospelChecked] = React.useState(false);
-  const [saintChecked, setSaintChecked] = React.useState(false);
+  const [rosaryChecked, setRosaryChecked] = useState(false);
+  const [gospelChecked, setGospelChecked] = useState(false);
+  const [saintChecked, setSaintChecked] = useState(false);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -148,185 +149,217 @@ export default function CustomizedAccordions() {
     }
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    const formData = {
+      officeReadings: checkedState.officeReadings,
+      lauds: checkedState.lauds,
+      vespers: checkedState.vespers,
+      terce: checkedState.terce,
+      sext: checkedState.sext,
+      none: checkedState.none,
+      compline: checkedState.compline,
+      rosary: rosaryChecked,
+      gospel: gospelChecked,
+      saint: saintChecked
+    };
+
+    console.log('Form Data:', formData);
+    
+    // Here you can process the formData or send it to your API
+    // Example: fetch('/api/your-endpoint', { method: 'POST', body: JSON.stringify(formData) });
+  };
+
   return (
-    <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary
-          aria-controls="panel1d-content"
-          id="panel1d-header"
-        >
-          <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem'}}>Divine Office</Typography>
-            <CustomFormControlLabel
-              control={
-                <Checkbox
-                  checked={Object.values(checkedState).every(Boolean)}
-                  onChange={handleMasterCheckboxChange}
-                  onClick={handleMasterCheckboxClick}
+    <form onSubmit={handleSubmit}>
+      <div>
+        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+          <AccordionSummary
+            aria-controls="panel1d-content"
+            id="panel1d-header"
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', flexDirection: isSmallScreen ? 'column' : 'row' }}>
+              <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem', textAlign: isSmallScreen ? 'center' : 'left'}}>Divine Office</Typography>
+              <CustomFormControlLabel
+                control={
+                  <Checkbox
+                    checked={Object.values(checkedState).every(Boolean)}
+                    onChange={handleMasterCheckboxChange}
+                    onClick={handleMasterCheckboxClick}
+                  />
+                }
+                label="Select All"
+                labelPlacement="start"
+                sx={{ marginLeft: isSmallScreen ? 0 : 'auto' }}
+              />
+            </Box>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Box sx={{ display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', justifyContent: 'space-evenly', alignItems: isSmallScreen ? 'center' : 'flex-start' }}>
+              <FormGroup>
+                <Typography variant="h6" sx={{ textAlign: isSmallScreen ? 'center' : 'left' }}>Major Hours</Typography>
+                <CustomFormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedState.officeReadings}
+                      onChange={handleCheckboxChange}
+                      name="officeReadings"
+                    />
+                  }
+                  label="Office of Readings"
                 />
-              }
-              label="Select All"
-              labelPlacement="start"
-            />
-          </Box>
-        </AccordionSummary>
-        <AccordionDetails>
-          <div className='flex justify-evenly'>
-            <FormGroup>
-              <Typography variant="h6">Major Hours</Typography>
-              <CustomFormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedState.officeReadings}
-                    onChange={handleCheckboxChange}
-                    name="officeReadings"
-                  />
-                }
-                label="Office of Readings"
-              />
-              <CustomFormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedState.lauds}
-                    onChange={handleCheckboxChange}
-                    name="lauds"
-                  />
-                }
-                label="Morning Prayer (Lauds)"
-              />
-              <CustomFormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedState.vespers}
-                    onChange={handleCheckboxChange}
-                    name="vespers"
-                  />
-                }
-                label="Evening Prayer (Vespers)"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Typography variant="h6">Minor Hours</Typography>
-              <CustomFormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedState.terce}
-                    onChange={handleCheckboxChange}
-                    name="terce"
-                  />
-                }
-                label="Mid-Morning Prayer (Terce)"
-              />
-              <CustomFormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedState.sext}
-                    onChange={handleCheckboxChange}
-                    name="sext"
-                  />
-                }
-                label="Midday Prayer (Sext)"
-              />
-              <CustomFormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedState.none}
-                    onChange={handleCheckboxChange}
-                    name="none"
-                  />
-                }
-                label="Afternoon Prayer (None)"
-              />
-              <CustomFormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedState.compline}
-                    onChange={handleCheckboxChange}
-                    name="compline"
-                  />
-                }
-                label="Night Prayer (Compline)"
-              />
-            </FormGroup>
-          </div>
-        </AccordionDetails>
-      </Accordion>
+                <CustomFormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedState.lauds}
+                      onChange={handleCheckboxChange}
+                      name="lauds"
+                    />
+                  }
+                  label="Morning Prayer (Lauds)"
+                />
+                <CustomFormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedState.vespers}
+                      onChange={handleCheckboxChange}
+                      name="vespers"
+                    />
+                  }
+                  label="Evening Prayer (Vespers)"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Typography variant="h6" sx={{ textAlign: isSmallScreen ? 'center' : 'left' }}>Minor Hours</Typography>
+                <CustomFormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedState.terce}
+                      onChange={handleCheckboxChange}
+                      name="terce"
+                    />
+                  }
+                  label="Mid-Morning Prayer (Terce)"
+                />
+                <CustomFormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedState.sext}
+                      onChange={handleCheckboxChange}
+                      name="sext"
+                    />
+                  }
+                  label="Midday Prayer (Sext)"
+                />
+                <CustomFormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedState.none}
+                      onChange={handleCheckboxChange}
+                      name="none"
+                    />
+                  }
+                  label="Afternoon Prayer (None)"
+                />
+                <CustomFormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedState.compline}
+                      onChange={handleCheckboxChange}
+                      name="compline"
+                    />
+                  }
+                  label="Night Prayer (Compline)"
+                />
+              </FormGroup>
+            </Box>
+          </AccordionDetails>
+        </Accordion>
 
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem' }}>Rosary</Typography>
-            <CustomFormControlLabel
-              control={
-                <Checkbox
-                  checked={rosaryChecked}
-                  onChange={handleRosaryCheckboxChange}
-                  onClick={handleCheckboxClick}
-                />
-              }
-              label="Select"
-              labelPlacement="start"
-            />
-          </Box>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            {`Today's mystery is the ${getMystery()}.`}
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+        <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+          <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', flexDirection: isSmallScreen ? 'column' : 'row' }}>
+              <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem', textAlign: isSmallScreen ? 'center' : 'left' }}>Rosary</Typography>
+              <CustomFormControlLabel
+                control={
+                  <Checkbox
+                    checked={rosaryChecked}
+                    onChange={handleRosaryCheckboxChange}
+                    onClick={handleCheckboxClick}
+                  />
+                }
+                label="Select"
+                labelPlacement="start"
+                sx={{ marginLeft: isSmallScreen ? 0 : 'auto' }}
+              />
+            </Box>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography sx={{ textAlign: isSmallScreen ? 'center' : 'left' }}>
+              {`Today's mystery is the ${getMystery()}.`}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
 
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem' }}>Gospel</Typography>
-            <CustomFormControlLabel
-              control={
-                <Checkbox
-                  checked={gospelChecked}
-                  onChange={handleGospelCheckboxChange}
-                  onClick={handleCheckboxClick}
-                />
-              }
-              label="Select"
-              labelPlacement="start"
-            />
-          </Box>
-        </AccordionSummary>
-        <AccordionDetails>
-        <Typography variant="body1" sx={{ fontSize: '1rem', fontWeight: '500' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-            {/* Source: {dailyGospel.source} <br />
-            Heading: {dailyGospel.heading} */}
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+        <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+          <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', flexDirection: isSmallScreen ? 'column' : 'row' }}>
+              <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem', textAlign: isSmallScreen ? 'center' : 'left' }}>Gospel</Typography>
+              <CustomFormControlLabel
+                control={
+                  <Checkbox
+                    checked={gospelChecked}
+                    onChange={handleGospelCheckboxChange}
+                    onClick={handleCheckboxClick}
+                  />
+                }
+                label="Select"
+                labelPlacement="start"
+                sx={{ marginLeft: isSmallScreen ? 0 : 'auto' }}
+              />
+            </Box>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography sx={{ textAlign: isSmallScreen ? 'center' : 'left' }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              malesuada lacus ex, sit amet blandit leo lobortis eget.
+              {/* Source: {dailyGospel.source} <br />
+              Heading: {dailyGospel.heading} */}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
 
-      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem' }}>Saint</Typography>
-            <CustomFormControlLabel
-              control={
-                <Checkbox
-                  checked={saintChecked}
-                  onChange={handleSaintCheckboxChange}
-                  onClick={handleCheckboxClick}
-                />
-              }
-              label="Select"
-              labelPlacement="start"
-            />
-          </Box>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-    </div>
+        <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+          <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', flexDirection: isSmallScreen ? 'column' : 'row' }}>
+              <Typography sx={{ flexGrow: 1, fontSize: '1.2rem', fontWeight: 'semi-bold', letterSpacing: '0.05rem', textAlign: isSmallScreen ? 'center' : 'left' }}>Saint</Typography>
+              <CustomFormControlLabel
+                control={
+                  <Checkbox
+                    checked={saintChecked}
+                    onChange={handleSaintCheckboxChange}
+                    onClick={handleCheckboxClick}
+                  />
+                }
+                label="Select"
+                labelPlacement="start"
+                sx={{ marginLeft: isSmallScreen ? 0 : 'auto' }}
+              />
+            </Box>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography sx={{ textAlign: isSmallScreen ? 'center' : 'left' }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              malesuada lacus ex, sit amet blandit leo lobortis eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      </div>
+
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+        <Button type="submit" variant="contained" color="primary">Submit</Button>
+      </Box>
+    </form>
   );
 }

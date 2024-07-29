@@ -5,8 +5,8 @@ const Prayers = () => {
   const date = new Date().toLocaleDateString()
 
     return (
-      <div className="flex h-max mt-10">
-        <div className="m-auto w-2/5">
+      <div className="flex items-center mt-10">
+        <div className="m-auto max-w-max">
           <h1>Select prayers for {date}</h1>
           <CustomizedAccordions />
         </div>

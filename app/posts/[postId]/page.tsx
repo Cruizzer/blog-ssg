@@ -5,7 +5,7 @@ import Link from "next/link";
 import "highlight.js/styles/github-dark.css";
 import CommentSection from "@/app/components/CommentSection";
 
-export const revalidate = 3600; //86400
+export const revalidate = 1800; //86400
 
 type Props = {
     params: {

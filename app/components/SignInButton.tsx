@@ -15,7 +15,7 @@ const SignInButton = () => {
                     alt="Profile"
                     className="w-8 h-8 rounded-full cursor-pointer"
                 />
-                <div className="absolute hidden group-hover:block bg-slate-700 p-2 space-y-2 rounded-md shadow-lg w-48 top-full right-0 -m-[20px]">
+                <div className="absolute hidden group-hover:block bg-slate-700 p-2 space-y-2 rounded-md shadow-lg w-48 top-full right-0 translate-x-1/2 sm:translate-x-1/2 sm:right-0">
                     <Link
                         href="/dashboard"
                         className="block px-4 py-2 text-white hover:bg-slate-600 rounded-md"
