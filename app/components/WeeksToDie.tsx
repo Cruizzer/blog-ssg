@@ -119,13 +119,14 @@ const WeeksToDie = () => {
             <div className="relative flex flex-col mt-2 ">
                 
                 <div className=" flex flex-row justify-end items-start my-2">
-                    <div className="mr-1.5 font-semibold text-white">Weeks</div>
-                    <FaArrowRight className="mt-1 text-zinc-200" />
+                    <div className="mr-1.5 font-semibold">Weeks</div>
+                    <FaArrowRight className="mt-1"/>
                 </div>
 
                 <div className="absolute top-0 left-[-6rem] ">
-                    <h4>Years</h4>
-                    <FaArrowDown className="text-zinc-200" />
+                    {/* <h4>Years</h4> */}
+                    <div className="ml-5 font-semibold">Years</div>
+                    <FaArrowDown className="ml-7"/>
                 </div>
 
                 <div className="flex justify-between">

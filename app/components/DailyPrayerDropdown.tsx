@@ -18,14 +18,14 @@ const DailyPrayerDropdown = () => {
             <div className="absolute hidden group-hover:block bg-slate-700 p-2 space-y-2 rounded-md shadow-lg w-48 top-full left-0">
                 <Link
                     href="/daily-gospel"
-                    className="block px-4 py-2 text-white hover:bg-slate-600 rounded-md w-full text-left"
+                    className="block px-4 py-2 text-white hover:text-gray-300 hover:bg-slate-600 rounded-md w-full text-left"
                 >
                     Daily Gospel
                 </Link>
 
                 <Link
                     href="/study-prayer"
-                    className="block px-4 py-2 text-white hover:bg-slate-600 rounded-md w-full text-left"
+                    className="block px-4 py-2 text-white hover:text-gray-300 hover:bg-slate-600 rounded-md w-full text-left"
                 >
                     Study Prayer
                 </Link>
