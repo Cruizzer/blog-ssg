@@ -1,0 +1,1 @@
+// Do a mongodb query which gets the prayer selection for a specific user by querying the Prayer collection with the userId field. If the user has a prayer selection, perform fetch request

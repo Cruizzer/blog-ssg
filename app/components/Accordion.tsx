@@ -157,14 +157,14 @@ export default function CustomizedAccordions() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      // Replace with actual user ID from session or context?
-      // const userId = '...'; 
-
       // Validate date range
       if (!startDate || !endDate || endDate < startDate) {
-          setError('Please ensure that both dates are selected and end date is after start date.');
+          setError('Please ensure that both dates are selected and the end date is after the start date.');
           return;
       }
+
+      // Calculate the number of days between the start and end dates
+      const dateDifference = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)) + 1;
 
       // Check if at least one prayer is selected
       const isAnyPrayerSelected = Object.values(checkedState).some(value => value) || rosaryChecked || gospelChecked || saintChecked;
@@ -174,27 +174,35 @@ export default function CustomizedAccordions() {
           return;
       }
 
+      // Generate the form data, including only selected prayers
+      const prayers: { [key: string]: boolean[] } = {};
+
+      const addPrayerIfChecked = (name: string, isChecked: boolean) => {
+          if (isChecked) {
+              prayers[name] = Array(dateDifference).fill(false);
+          }
+      };
+
+      addPrayerIfChecked('officeReadings', checkedState.officeReadings);
+      addPrayerIfChecked('lauds', checkedState.lauds);
+      addPrayerIfChecked('vespers', checkedState.vespers);
+      addPrayerIfChecked('terce', checkedState.terce);
+      addPrayerIfChecked('sext', checkedState.sext);
+      addPrayerIfChecked('none', checkedState.none);
+      addPrayerIfChecked('compline', checkedState.compline);
+      addPrayerIfChecked('rosary', rosaryChecked);
+      addPrayerIfChecked('gospel', gospelChecked);
+      addPrayerIfChecked('saint', saintChecked);
+
+      const completed = Array(dateDifference).fill(false);
+
       const formData = {
-          // userId,
-          // dateCreated: new Date(),
-          prayerSelections: [
-              {
-                  dateStart: startDate,
-                  dateEnd: endDate,
-                  prayers: {
-                      officeReadings: checkedState.officeReadings,
-                      lauds: checkedState.lauds,
-                      vespers: checkedState.vespers,
-                      terce: checkedState.terce,
-                      sext: checkedState.sext,
-                      none: checkedState.none,
-                      compline: checkedState.compline,
-                      rosary: rosaryChecked,
-                      gospel: gospelChecked,
-                      saint: saintChecked,
-                  },
-              },
-          ],
+          prayerSelections: {
+              dateStart: startDate,
+              dateEnd: endDate,
+              prayers,
+              completed,
+          },
       };
 
       console.log('Form Data:', formData);
@@ -241,6 +249,7 @@ export default function CustomizedAccordions() {
           setLoading(false); // Ensure loading state is reset
       }
   };
+
 
 
   return (

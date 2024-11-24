@@ -1,4 +1,4 @@
-import { Schema, model, models, Document, Types } from 'mongoose';
+import { Schema, model, models, Document } from 'mongoose';
 
 interface IPrayer extends Document {
     userId: string;
@@ -7,18 +7,19 @@ interface IPrayer extends Document {
         dateStart: Date;
         dateEnd: Date;
         prayers: {
-            officeReadings: boolean;
-            lauds: boolean;
-            vespers: boolean;
-            terce: boolean;
-            sext: boolean;
-            none: boolean;
-            compline: boolean;
-            rosary: boolean;
-            gospel: boolean;
-            saint: boolean;
+            officeReadings?: boolean[];
+            lauds?: boolean[];
+            vespers?: boolean[];
+            terce?: boolean[];
+            sext?: boolean[];
+            none?: boolean[];
+            compline?: boolean[];
+            rosary?: boolean[];
+            gospel?: boolean[];
+            saint?: boolean[];
         };
-    }[];
+        completed: boolean[];
+    };
 }
 
 const prayerSchema = new Schema<IPrayer>({
@@ -31,36 +32,63 @@ const prayerSchema = new Schema<IPrayer>({
         default: Date.now,
         required: true,
     },
-    prayerSelections: [
-        {
-            dateStart: {
-                type: Date,
-                required: true,
+    prayerSelections: {
+        dateStart: {
+            type: Date,
+            required: true,
+        },
+        dateEnd: {
+            type: Date,
+            required: true,
+        },
+        prayers: {
+            officeReadings: {
+                type: [Boolean],
+                required: false,
             },
-            dateEnd: {
-                type: Date,
-                required: true,
-                validate: {
-                    validator: function (value: Date) {
-                        return this.get('dateStart') <= value;
-                    },
-                    message: 'dateEnd must be greater than or equal to dateStart',
-                },
+            lauds: {
+                type: [Boolean],
+                required: false,
             },
-            prayers: {
-                officeReadings: { type: Boolean, default: false },
-                lauds: { type: Boolean, default: false },
-                vespers: { type: Boolean, default: false },
-                terce: { type: Boolean, default: false },
-                sext: { type: Boolean, default: false },
-                none: { type: Boolean, default: false },
-                compline: { type: Boolean, default: false },
-                rosary: { type: Boolean, default: false },
-                gospel: { type: Boolean, default: false },
-                saint: { type: Boolean, default: false },
+            vespers: {
+                type: [Boolean],
+                required: false,
+            },
+            terce: {
+                type: [Boolean],
+                required: false,
+            },
+            sext: {
+                type: [Boolean],
+                required: false,
+            },
+            none: {
+                type: [Boolean],
+                required: false,
+            },
+            compline: {
+                type: [Boolean],
+                required: false,
+            },
+            rosary: {
+                type: [Boolean],
+                required: false,
+            },
+            gospel: {
+                type: [Boolean],
+                required: false,
+            },
+            saint: {
+                type: [Boolean],
+                required: false,
             },
         },
-    ],
+        completed: {
+            type: [Boolean],
+            required: true,
+            default: [],
+        },
+    },
 }, { timestamps: true });
 
 const Prayer = models.Prayer || model<IPrayer>('Prayer', prayerSchema);
